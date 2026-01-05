@@ -29,12 +29,10 @@ export const CandidateProfilePreview = ({
       <div className="p-4 space-y-6">
         {/* Avatar & Name */}
         <div className="flex flex-col items-center text-center">
-          <div className="w-24 h-24 rounded-full bg-green-light overflow-hidden mb-4">
-            <img
-              src={candidate.avatar}
-              alt={candidate.name}
-              className="w-full h-full object-cover"
-            />
+          <div className="w-24 h-24 rounded-full bg-green-light flex items-center justify-center mb-4">
+            <span className="text-3xl font-serif font-semibold text-green-dark">
+              {candidate.name.charAt(0).toUpperCase()}
+            </span>
           </div>
           <h3 className="font-serif font-semibold text-xl text-foreground">
             {candidate.name}

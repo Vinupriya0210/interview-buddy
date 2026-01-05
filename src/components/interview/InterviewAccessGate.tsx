@@ -66,14 +66,10 @@ export const InterviewAccessGate = ({
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-6">
       <Card className="w-full max-w-lg p-8 animate-fade-in">
-        {/* Company Logo */}
+        {/* Company Icon */}
         <div className="flex justify-center mb-6">
-          <div className="w-20 h-20 rounded-2xl bg-green-light flex items-center justify-center overflow-hidden">
-            <img
-              src={interview.companyLogo}
-              alt={interview.companyName}
-              className="w-full h-full object-cover"
-            />
+          <div className="w-20 h-20 rounded-2xl bg-green-light flex items-center justify-center">
+            <Building2 className="w-10 h-10 text-green-dark" />
           </div>
         </div>
 

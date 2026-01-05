@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { StatusBadge } from './StatusBadge';
+import { GuidelinesPanel } from './GuidelinesPanel';
 import { InterviewDetails } from '@/types/interview';
-import { Video, Clock, Building2, User } from 'lucide-react';
+import { Video, Clock, Building2, User, BookOpen } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface InterviewAccessGateProps {
   interview: InterviewDetails;
@@ -19,6 +21,7 @@ export const InterviewAccessGate = ({
   const [countdown, setCountdown] = useState<string>('');
   const [isReady, setIsReady] = useState(false);
   const [isCheckingPermissions, setIsCheckingPermissions] = useState(false);
+  const [showGuidelines, setShowGuidelines] = useState(false);
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -63,8 +66,37 @@ export const InterviewAccessGate = ({
 
   const canJoin = interview.status === 'live' && isReady;
 
+  if (showGuidelines) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+        <Card className="w-full max-w-lg p-6 animate-fade-in">
+          <GuidelinesPanel onClose={() => setShowGuidelines(false)} />
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-6">
+      {/* Guidelines Button - Top Right */}
+      <div className="fixed top-4 right-4">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setShowGuidelines(true)}
+              className="w-10 h-10 rounded-lg"
+            >
+              <BookOpen className="w-5 h-5 text-green-dark" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>View Guidelines</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
+
       <Card className="w-full max-w-lg p-8 animate-fade-in">
         {/* Company Icon */}
         <div className="flex justify-center mb-6">

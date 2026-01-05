@@ -25,12 +25,12 @@ export const InterviewProgress = ({ stage, duration, isLive }: InterviewProgress
   const currentIndex = stages.findIndex(s => s.id === stage);
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="p-3 space-y-3">
       {/* Timer & Status */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Clock className="w-4 h-4 text-green-dark" />
-          <span className="font-mono text-lg font-medium text-foreground">
+          <span className="font-mono text-base font-medium text-foreground">
             {formatDuration(duration)}
           </span>
         </div>
@@ -38,33 +38,33 @@ export const InterviewProgress = ({ stage, duration, isLive }: InterviewProgress
       </div>
 
       {/* Stage Progress */}
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         <p className="text-xs text-green-muted font-medium uppercase tracking-wider">
-          Interview Stage
+          Stage
         </p>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           {stages.map((s, index) => {
             const Icon = s.icon;
             const isPast = index < currentIndex;
             const isCurrent = index === currentIndex;
 
             return (
-              <div key={s.id} className="flex items-center gap-2">
+              <div key={s.id} className="flex items-center gap-1">
                 <div
                   className={cn(
-                    'flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors',
+                    'flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-medium transition-colors',
                     isCurrent && 'bg-green-primary text-primary-foreground',
                     isPast && 'bg-green-soft/50 text-green-dark',
                     !isCurrent && !isPast && 'bg-muted text-muted-foreground'
                   )}
                 >
                   <Icon className="w-3 h-3" />
-                  {s.label}
+                  <span className="hidden sm:inline">{s.label}</span>
                 </div>
                 {index < stages.length - 1 && (
                   <div
                     className={cn(
-                      'w-4 h-0.5 rounded-full',
+                      'w-2 h-0.5 rounded-full',
                       isPast ? 'bg-green-soft' : 'bg-muted'
                     )}
                   />

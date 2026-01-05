@@ -60,7 +60,7 @@ export const VideoInterviewSection = ({
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="h-screen bg-background flex overflow-hidden">
       {/* Left Sidebar - Panel Buttons */}
       <div className="flex">
         {/* Toggle Buttons */}
@@ -126,21 +126,12 @@ export const VideoInterviewSection = ({
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header Bar */}
-        <div className="h-16 bg-card border-b border-border flex items-center justify-between px-6">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-lg bg-green-light overflow-hidden">
-              <img
-                src={interview.companyLogo}
-                alt={interview.companyName}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h1 className="font-serif font-semibold text-foreground">
-                {interview.companyName}
-              </h1>
-              <p className="text-xs text-green-muted">{interview.role} Interview</p>
-            </div>
+        <div className="h-14 bg-card border-b border-border flex items-center justify-between px-6">
+          <div>
+            <h1 className="font-serif font-semibold text-foreground">
+              {interview.companyName}
+            </h1>
+            <p className="text-xs text-green-muted">{interview.role} Interview</p>
           </div>
 
           <ConnectionStatus

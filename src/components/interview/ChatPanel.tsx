@@ -38,15 +38,15 @@ export const ChatPanel = ({ messages, onSendMessage }: ChatPanelProps) => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full overflow-hidden">
       {/* Header */}
-      <div className="p-4 border-b border-border flex items-center gap-2">
+      <div className="p-3 border-b border-border flex items-center gap-2 shrink-0">
         <MessageCircle className="w-4 h-4 text-green-dark" />
-        <h3 className="font-serif font-medium">Chat</h3>
+        <h3 className="font-serif font-medium text-sm">Chat</h3>
       </div>
 
       {/* Messages */}
-      <ScrollArea className="flex-1">
+      <ScrollArea className="flex-1 min-h-0">
         <div className="p-4 space-y-3">
           {messages.length === 0 ? (
             <div className="text-center text-green-muted text-sm py-8">
@@ -92,17 +92,18 @@ export const ChatPanel = ({ messages, onSendMessage }: ChatPanelProps) => {
       </ScrollArea>
 
       {/* Input */}
-      <div className="p-4 border-t border-border">
+      <div className="p-3 border-t border-border shrink-0">
         <div className="flex items-center gap-2">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Type a message..."
-            className="flex-1"
+            className="flex-1 h-9 text-sm"
           />
           <Button
             size="icon"
+            className="h-9 w-9"
             onClick={handleSend}
             disabled={!input.trim()}
           >

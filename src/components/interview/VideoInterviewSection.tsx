@@ -176,7 +176,7 @@ export const VideoInterviewSection = ({
             />
 
             {/* Chat */}
-            <div className="flex-1 border-t border-border">
+            <div className="flex-1 border-t border-border overflow-hidden min-h-0">
               <ChatPanel
                 messages={messages}
                 onSendMessage={onSendMessage}

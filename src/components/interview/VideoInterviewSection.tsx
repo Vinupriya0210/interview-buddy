@@ -140,10 +140,10 @@ export const VideoInterviewSection = ({
           />
         </div>
 
-        {/* Video Area */}
-        <div className="flex-1 flex">
+        {/* Video Area - fixed height container */}
+        <div className="flex-1 flex min-h-0 overflow-hidden">
           {/* Video Grid */}
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col min-w-0">
             <VideoGrid
               localStream={stream}
               isCameraOn={isCameraOn}
@@ -152,7 +152,7 @@ export const VideoInterviewSection = ({
             />
 
             {/* Controls Bar */}
-            <div className="h-20 bg-card border-t border-border flex items-center justify-center">
+            <div className="h-20 bg-card border-t border-border flex items-center justify-center shrink-0">
               <VideoControls
                 isMicOn={isMicOn}
                 isCameraOn={isCameraOn}
@@ -166,8 +166,8 @@ export const VideoInterviewSection = ({
             </div>
           </div>
 
-          {/* Right Sidebar - Chat & Info */}
-          <div className="w-80 bg-card border-l border-border flex flex-col h-full overflow-hidden">
+          {/* Right Sidebar - Chat & Info - absolute height constraint */}
+          <div className="w-80 bg-card border-l border-border flex flex-col overflow-hidden">
             {/* Progress - fixed height */}
             <div className="shrink-0">
               <InterviewProgress
@@ -177,8 +177,8 @@ export const VideoInterviewSection = ({
               />
             </div>
 
-            {/* Chat - takes remaining space */}
-            <div className="flex-1 border-t border-border overflow-hidden min-h-0">
+            {/* Chat - takes remaining space with scroll */}
+            <div className="flex-1 border-t border-border min-h-0 overflow-hidden">
               <ChatPanel
                 messages={messages}
                 onSendMessage={onSendMessage}

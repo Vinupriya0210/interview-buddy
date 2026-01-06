@@ -38,18 +38,18 @@ export const ChatPanel = ({ messages, onSendMessage }: ChatPanelProps) => {
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      {/* Header */}
+      {/* Header - fixed height */}
       <div className="p-3 border-b border-border flex items-center gap-2 shrink-0">
         <MessageCircle className="w-4 h-4 text-green-dark" />
         <h3 className="font-serif font-medium text-sm">Chat</h3>
       </div>
 
-      {/* Messages with visible scrollbar */}
+      {/* Messages - scrollable area only */}
       <div 
-        className="flex-1 min-h-0 overflow-y-scroll pr-1"
+        className="flex-1 overflow-y-auto min-h-0"
         style={{ 
           scrollbarWidth: 'thin',
-          scrollbarColor: 'hsl(152 18% 68%) transparent'
+          scrollbarColor: 'hsl(152 18% 68%) hsl(152 18% 95%)'
         }}
       >
         <div className="p-4 space-y-3">
@@ -96,7 +96,7 @@ export const ChatPanel = ({ messages, onSendMessage }: ChatPanelProps) => {
         </div>
       </div>
 
-      {/* Input */}
+      {/* Input - fixed at bottom */}
       <div className="p-3 border-t border-border shrink-0">
         <div className="flex items-center gap-2">
           <Input

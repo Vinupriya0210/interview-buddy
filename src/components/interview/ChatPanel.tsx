@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { ChatMessage } from '@/types/interview';
 import { Send, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -45,8 +44,8 @@ export const ChatPanel = ({ messages, onSendMessage }: ChatPanelProps) => {
         <h3 className="font-serif font-medium text-sm">Chat</h3>
       </div>
 
-      {/* Messages */}
-      <ScrollArea className="flex-1 min-h-0">
+      {/* Messages with visible scrollbar */}
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-green-soft scrollbar-track-transparent">
         <div className="p-4 space-y-3">
           {messages.length === 0 ? (
             <div className="text-center text-green-muted text-sm py-8">
@@ -89,7 +88,7 @@ export const ChatPanel = ({ messages, onSendMessage }: ChatPanelProps) => {
           )}
           <div ref={messagesEndRef} />
         </div>
-      </ScrollArea>
+      </div>
 
       {/* Input */}
       <div className="p-3 border-t border-border shrink-0">

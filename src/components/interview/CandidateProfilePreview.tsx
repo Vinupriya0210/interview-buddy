@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { CandidateProfile } from '@/types/interview';
-import { User, Mail, Phone, FileText, Briefcase, GraduationCap } from 'lucide-react';
+import { Mail, Phone, FileText, Briefcase, GraduationCap } from 'lucide-react';
+import { ResumeModal } from './ResumeModal';
 
 interface CandidateProfilePreviewProps {
   candidate: CandidateProfile;
@@ -12,10 +14,7 @@ export const CandidateProfilePreview = ({
   candidate,
   onClose,
 }: CandidateProfilePreviewProps) => {
-  const handleViewResume = () => {
-    // In production, this would open a PDF viewer
-    window.open(candidate.resumeUrl, '_blank');
-  };
+  const [showResume, setShowResume] = useState(false);
 
   return (
     <div className="h-full overflow-y-auto">
@@ -89,7 +88,7 @@ export const CandidateProfilePreview = ({
         <Button
           variant="outline"
           className="w-full gap-2"
-          onClick={handleViewResume}
+          onClick={() => setShowResume(true)}
         >
           <FileText className="w-4 h-4" />
           View Resume
@@ -99,6 +98,12 @@ export const CandidateProfilePreview = ({
           This information is read-only and cannot be edited during the interview.
         </p>
       </div>
+
+      <ResumeModal
+        candidate={candidate}
+        open={showResume}
+        onClose={() => setShowResume(false)}
+      />
     </div>
   );
 };

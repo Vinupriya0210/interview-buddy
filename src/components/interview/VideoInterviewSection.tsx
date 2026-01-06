@@ -167,15 +167,17 @@ export const VideoInterviewSection = ({
           </div>
 
           {/* Right Sidebar - Chat & Info */}
-          <div className="w-80 bg-card border-l border-border flex flex-col">
-            {/* Progress */}
-            <InterviewProgress
-              stage={stage}
-              duration={interviewDuration}
-              isLive={interview.status === 'live'}
-            />
+          <div className="w-80 bg-card border-l border-border flex flex-col h-full overflow-hidden">
+            {/* Progress - fixed height */}
+            <div className="shrink-0">
+              <InterviewProgress
+                stage={stage}
+                duration={interviewDuration}
+                isLive={interview.status === 'live'}
+              />
+            </div>
 
-            {/* Chat */}
+            {/* Chat - takes remaining space */}
             <div className="flex-1 border-t border-border overflow-hidden min-h-0">
               <ChatPanel
                 messages={messages}
@@ -183,8 +185,8 @@ export const VideoInterviewSection = ({
               />
             </div>
 
-            {/* AI Tips */}
-            <div className="p-4 border-t border-border">
+            {/* AI Tips - fixed height */}
+            <div className="shrink-0 p-4 border-t border-border">
               <AITipsPanel />
             </div>
           </div>
